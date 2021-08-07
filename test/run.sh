@@ -17,20 +17,6 @@ exit $ret
 fi
 rm -rf target
 
-./gradlew build
-ret=$?
-if [ $ret -ne 0 ]; then
-exit $ret
-fi
-rm -rf build
-
-./gradlew bootBuildImage
-ret=$?
-if [ $ret -ne 0 ]; then
-exit $ret
-fi
-rm -rf build
-
 cd ../initial
 
 ./mvnw clean compile
@@ -39,12 +25,5 @@ if [ $ret -ne 0 ]; then
 exit $ret
 fi
 rm -rf target
-
-./gradlew compileJava
-ret=$?
-if [ $ret -ne 0 ]; then
-exit $ret
-fi
-rm -rf build
 
 exit
