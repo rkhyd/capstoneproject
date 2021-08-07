@@ -3,11 +3,11 @@ pipeline {
       stages {
         stage('build jar file using maven') {
       steps {
-        pwd
-        cd complete
-        pwd
-        ./mvnw package
-        pwd
+        sh 'pwd'
+        sh 'cd complete'
+        sh 'pwd'
+        sh './mvnw package'
+        sh 'pwd'
       }
     }
   }
