@@ -5,7 +5,6 @@ pipeline {
       steps {
         cd gs-spring-boot-docker/complete
         pwd
-        ./mvnw package
       }
     }
   }
