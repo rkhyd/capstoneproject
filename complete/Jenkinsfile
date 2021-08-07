@@ -4,6 +4,7 @@ pipeline {
         stage('build jar file using maven') {
       steps {
         cd gs-spring-boot-docker/complete
+        pwd
         ./mvnw package
         java -jar target/spring-boot-docker-complete-0.0.1-SNAPSHOT.jar
       }
