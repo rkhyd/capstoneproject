@@ -4,9 +4,9 @@ pipeline {
       stage('Build jar file using maven docker image') {
         agent { docker { image 'maven:3.3.3' } }
         steps {
-          sh 'pwd'
           dir ("complete") {
             sh './mvnw package' 
+            sh 'echo "Build Completed..."'
           }
         }
       }
@@ -15,6 +15,7 @@ pipeline {
         steps {
           dir ("complete") {
             sh './run.sh'
+            sh 'echo "Tests completed and Docker image built..."'
           }
         }
       }
