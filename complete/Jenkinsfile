@@ -11,7 +11,7 @@ pipeline {
         }
       }
       stage('Run tests and build docker image') {
-        agent none
+        agent any
         steps {
           dir ("complete") {
             sh './run.sh'
