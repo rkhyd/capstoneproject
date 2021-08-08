@@ -3,8 +3,11 @@ pipeline {
       stages {
         stage('build jar file using maven') {
       steps {
-        sh 'cd gs-spring-boot-docker/complete'
         sh 'pwd'
+        dir ("complete") {
+          sh './mvnw package' 
+          sh './run.sh' 
+        }
       }
     }
   }

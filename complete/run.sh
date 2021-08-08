@@ -1,0 +1,26 @@
+#!/bin/sh
+
+./mvnw clean package
+ret=$?
+if [ $ret -ne 0 ]; then
+exit $ret
+fi
+rm -rf target
+
+./mvnw spring-boot:build-image
+ret=$?
+if [ $ret -ne 0 ]; then
+exit $ret
+fi
+rm -rf target
+
+cd ../initial
+
+./mvnw clean compile
+ret=$?
+if [ $ret -ne 0 ]; then
+exit $ret
+fi
+rm -rf target
+
+exit
