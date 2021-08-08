@@ -1,14 +1,22 @@
 pipeline {
-    agent { docker { image 'maven:3.3.3' } }
-      stages {
-        stage('build jar file using maven') {
-      steps {
-        sh 'pwd'
-        dir ("complete") {
-          sh './mvnw package' 
-          sh './run.sh' 
+  agent none
+    stages {
+      stage('Build jar file using maven docker image') {
+        agent { docker { image 'maven:3.3.3' } }
+        steps {
+          sh 'pwd'
+          dir ("complete") {
+            sh './mvnw package' 
+          }
+        }
+      }
+      stage('Run tests and build docker image') {
+        agent none
+        steps {
+          dir ("complete") {
+            sh './run.sh'
+          }
         }
       }
     }
-  }
-}
+ }
