@@ -1,14 +1,14 @@
-pipeline {
-  agent { customWorkspace '/var/lib/jenkins/workspace' }
-    stages {
-      stage('build jar file using maven') {
-        steps {
-          sh 'pwd'
-          sh 'cd complete'
-          sh 'pwd'
-          sh './mvnw package'
+pipeline {pipeline {
+    agent { docker { image 'maven:3.3.3' } }
+      stages {
+        stage('build jar file using maven') {
+      steps {
+        sh 'pwd'
+        dir ("complete") {
           sh 'pwd'
         }
+        sh './mvnw package'
+        sh 'pwd'
       }
     }
   }
