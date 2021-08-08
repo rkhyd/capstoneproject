@@ -6,7 +6,7 @@ pipeline {
         sh 'pwd'
         dir ("complete") {
           sh './mvnw package' 
-          sh 'run.sh' 
+          sh './run.sh' 
         }
       }
     }
