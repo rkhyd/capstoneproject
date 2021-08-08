@@ -5,9 +5,11 @@ pipeline {
       steps {
         sh 'pwd'
         dir ("complete") {
-          sh 'pwd && ./mvnw package' 
+          sh './mvnw package' 
         }
-        sh 'pwd'
+        dir ("test") {
+          sh 'run.sh' 
+        }
       }
     }
   }
